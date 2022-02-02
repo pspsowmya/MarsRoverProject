@@ -1,8 +1,8 @@
 package com.exercises.model;
 
 public enum DirectionEnum {
-    EAST,
-    WEST,
-    NORTH,
-    SOUTH
+    E,
+    W,
+    N,
+    S
 }

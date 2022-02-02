@@ -1,101 +1,60 @@
 package com.exercises.model;
 
-public class Rover implements NavigationControls {
+import java.util.ArrayList;
+import java.util.List;
 
-     private String position;
-     private String instruction;
-     public int x;
-     public int y;
-     public String direction;
+public class Rover extends NavigationService {
 
-     public Rover(String position, String instruction){
-         this.position = position;
-         this.instruction = instruction;
-     }
+    private String position;
+    private String instruction;
+    private int x_coordinate;
+    private int y_coordinate;
+    private DirectionEnum direction;
+    List<String> roverPositions = new ArrayList();
+    public NavigationService navigationService = new NavigationService();
 
-     public void splitGivenPositionToXYAndDirection(){
-         x = Integer.parseInt(String.valueOf(position.charAt(0)));
-         y = Integer.parseInt(String.valueOf(position.charAt(2)));
-         direction = String.valueOf(position.charAt(4));
-         System.out.println( x + " "+  y + " "+ direction);
-     }
+    public Rover(String position, String instruction) {
+        this.position = position;
+        this.instruction = instruction;
+    }
 
+    public void splitGivenPositionToXYAndDirection() {
+        x_coordinate = Integer.parseInt(String.valueOf(position.charAt(0)));
+        y_coordinate = Integer.parseInt(String.valueOf(position.charAt(2)));
+        direction = DirectionEnum.valueOf(String.valueOf(position.charAt(4)));
+    }
 
-     public String getPositionBasedOnInstruction(){
-         splitGivenPositionToXYAndDirection();
-         for(int i=0; i<=instruction.length()-1; i++){
-             if(instruction.charAt(i)=='L'){
-                 position =  spinLeft();
-             }
-             else if(instruction.charAt(i)=='R'){
-                 position =  spinRight();
-             }
-             else if(instruction.charAt(i)=='M'){
-                position = movePosition();
-             }
-         }
-         return position;
-     }
-
-
-    public String spinLeft(){
-         if(direction.equals("N")){
-             direction = "W";
-         }
-         else if(direction.equals("S")){
-             direction = "E";
-         }
-         else if(direction.equals("E")){
-             direction = "N";
-         }
-         else if(direction.equals("W")){
-             direction = "S";
-         }
-        position = getCurrentPositionAsString(x, y ,direction);
+    public String getPositionBasedOnInstruction() throws Exception {
+        splitGivenPositionToXYAndDirection();
+        if (checkValidCoordinates()) {
+            for (int i = 0; i <= instruction.length() - 1; i++) {
+                splitGivenPositionToXYAndDirection();
+                if (instruction.charAt(i) == 'L') {
+                    position = navigationService.spinLeft(x_coordinate, y_coordinate, direction);
+                } else if (instruction.charAt(i) == 'R') {
+                    position = navigationService.spinRight(x_coordinate, y_coordinate, direction);
+                } else if (instruction.charAt(i) == 'M') {
+                    position = navigationService.movePosition(x_coordinate, y_coordinate, direction);
+                }
+            }
+        } else {
+            throw new Exception("Given input is outside the plateau range");
+        }
+        roverPositions.add(position);
         return position;
     }
 
-    public String spinRight(){
-        if(direction.equals("N")){
-            direction = "E";
+    public boolean checkValidCoordinates() {
+        boolean isValid = false;
+        if (x_coordinate <= SquarePlateau.MAX_X_COORDINATE && y_coordinate <= SquarePlateau.MAX_Y_COORDINATE
+                && x_coordinate >= SquarePlateau.MIN_X_COORDINATE && y_coordinate >= SquarePlateau.MIN_Y_COORDINATE) {
+            isValid = true;
         }
-        else if(direction.equals("S")){
-            direction = "W";
-        }
-        else if(direction.equals("E")){
-            direction = "S";
-        }
-        else if(direction.equals("W")){
-            direction = "N";
-        }
-        position = getCurrentPositionAsString(x, y ,direction);
-        return position;
-    }
-
-    public String movePosition(){
-        if(direction.equals("N")){
-            y = y+1;
-        }
-        else if(direction.equals("S")){
-            y = y-1;
-        }
-        else if(direction.equals("E")){
-            x = x+1;
-        }
-        else if(direction.equals("W")){
-            x = x-1;
-        }
-        position = getCurrentPositionAsString(x, y ,direction);
-        return position;
+        return isValid;
     }
 
 
-    public String getCurrentPositionAsString(int x, int y, String direction){
-         position = x + " "+ y + " "+ direction;
-         return position;
-    }
-
-     public String getPosition() {
+    public String getPosition() {
         return position;
     }
 
