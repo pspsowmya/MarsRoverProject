@@ -11,7 +11,8 @@ public class Main {
         plateau.getMax_X_Coordinate();
         plateau.getMax_Y_Coordinate();
 
-        Rover rover = new Rover("0 0 S", "MRMRMRMR");
-        System.out.println(rover.getPositionBasedOnInstruction());
+        Rover rover = new Rover();
+        System.out.println(rover.getPositionBasedOnInstruction("1 2 N", "LMLMLMLMM"));
+        System.out.println(rover.getPositionBasedOnInstruction("3 3 E", "MMRMMRMRRM"));
     }
 }

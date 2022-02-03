@@ -36,7 +36,6 @@ public class NavigationService implements NavigationControls {
 
     @Override
     public String movePosition(int x_coordinate, int y_coordinate, DirectionEnum direction) {
-
         if (direction.equals(DirectionEnum.N)) {
             if(y_coordinate < SquarePlateau.MAX_Y_COORDINATE) {
                 y_coordinate = y_coordinate + 1;
@@ -45,7 +44,7 @@ public class NavigationService implements NavigationControls {
                 y_coordinate = y_coordinate;
             }
         } else if (direction.equals(DirectionEnum.S)) {
-            if (y_coordinate > SquarePlateau.MIN_Y_COORDINATE) {
+            if ((y_coordinate > SquarePlateau.MIN_Y_COORDINATE)) {
                 y_coordinate = y_coordinate - 1;
             } else {
                 y_coordinate = y_coordinate;
@@ -67,6 +66,7 @@ public class NavigationService implements NavigationControls {
         position = getCurrentPositionAsString(x_coordinate, y_coordinate, direction);
         return position;
     }
+
 
     @Override
     public String getCurrentPositionAsString(int x, int y, DirectionEnum direction) {

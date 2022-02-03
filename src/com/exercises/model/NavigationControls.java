@@ -7,4 +7,5 @@ public interface NavigationControls {
      String movePosition(int x, int y, DirectionEnum direction);
      String getCurrentPositionAsString(int x, int y, DirectionEnum direction);
 
+
 }
