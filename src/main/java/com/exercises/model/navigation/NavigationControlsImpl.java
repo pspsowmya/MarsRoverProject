@@ -1,9 +1,23 @@
-package com.exercises.model;
+package com.exercises.model.navigation;
 
-public class NavigationService implements NavigationControls {
+import com.exercises.model.enums.DirectionEnum;
 
-    public String position;
+/**
+ * This class provides methods to spin vehicles left and right based on the
+ * instruction given by user
+ */
+public abstract class NavigationControlsImpl implements NavigationControls {
+    private String position;
 
+    /**
+     * This method is to spin the vehicle to left based on the instruction
+     * given in the input and return position
+     *
+     * @param x_coordinate
+     * @param y_coordinate
+     * @param direction
+     * @return
+     */
     @Override
     public String spinLeft(int x_coordinate, int y_coordinate, DirectionEnum direction) {
         if (direction.equals(DirectionEnum.N)) {
@@ -19,6 +33,15 @@ public class NavigationService implements NavigationControls {
         return position;
     }
 
+    /**
+     * This method is to spin the vehicle to right based on the instruction
+     * given in the input and return position
+     *
+     * @param x_coordinate
+     * @param y_coordinate
+     * @param direction
+     * @return
+     */
     @Override
     public String spinRight(int x_coordinate, int y_coordinate, DirectionEnum direction) {
         if (direction.equals(DirectionEnum.N)) {
@@ -34,40 +57,15 @@ public class NavigationService implements NavigationControls {
         return position;
     }
 
-    @Override
-    public String movePosition(int x_coordinate, int y_coordinate, DirectionEnum direction) {
-        if (direction.equals(DirectionEnum.N)) {
-            if(y_coordinate < SquarePlateau.MAX_Y_COORDINATE) {
-                y_coordinate = y_coordinate + 1;
-            }
-            else {
-                y_coordinate = y_coordinate;
-            }
-        } else if (direction.equals(DirectionEnum.S)) {
-            if ((y_coordinate > SquarePlateau.MIN_Y_COORDINATE)) {
-                y_coordinate = y_coordinate - 1;
-            } else {
-                y_coordinate = y_coordinate;
-            }
-        } else if (direction.equals(DirectionEnum.E)) {
-            if(x_coordinate < SquarePlateau.MAX_X_COORDINATE){
-                x_coordinate = x_coordinate + 1;
-            }
-            else{
-                x_coordinate = x_coordinate;
-            }
-        } else if (direction.equals(DirectionEnum.W)) {
-            if (x_coordinate > SquarePlateau.MIN_X_COORDINATE) {
-                x_coordinate = x_coordinate - 1;
-            } else {
-                x_coordinate = x_coordinate;
-            }
-        }
-        position = getCurrentPositionAsString(x_coordinate, y_coordinate, direction);
-        return position;
-    }
 
-
+    /**
+     * This method is to cast the final position to string and return
+     *
+     * @param x
+     * @param y
+     * @param direction
+     * @return
+     */
     @Override
     public String getCurrentPositionAsString(int x, int y, DirectionEnum direction) {
         position = x + " " + y + " " + direction;
