@@ -10,7 +10,6 @@ public abstract class NavigationControlsImpl implements NavigationControls {
     protected String position;
 
 
-
     /**
      * This method is to spin the vehicle to left based on the instruction
      * given in the input and return position
