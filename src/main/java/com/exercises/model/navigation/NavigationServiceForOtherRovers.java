@@ -11,8 +11,6 @@ import com.exercises.model.plateau.SquarePlateauImpl;
  */
 public class NavigationServiceForOtherRovers extends NavigationControlsImpl {
 
-    private String position;
-
 
     /**
      * This method is to move the other vehicles one step forward or backward direction
@@ -29,7 +27,7 @@ public class NavigationServiceForOtherRovers extends NavigationControlsImpl {
     public String movePosition(int x_coordinate, int y_coordinate, DirectionEnum direction) {
         for (int i = 0; i <= Rover.roverPositions.size() - 1; i++) {
             if (direction.equals(DirectionEnum.N)) {
-                if ((y_coordinate < SquarePlateauImpl.MAX_Y_COORDINATE)
+                if ((y_coordinate < SquarePlateauImpl.max_Y_Coordinate)
                         && (y_coordinate + 1 != Integer.parseInt(String.valueOf(Rover.roverPositions.get(i).charAt(2))))
                         || (x_coordinate != Integer.parseInt(String.valueOf(Rover.roverPositions.get(i).charAt(0))))) {
                     y_coordinate = y_coordinate + 1;
@@ -45,7 +43,7 @@ public class NavigationServiceForOtherRovers extends NavigationControlsImpl {
                     y_coordinate = y_coordinate;
                 }
             } else if (direction.equals(DirectionEnum.E)) {
-                if ((x_coordinate < SquarePlateauImpl.MAX_X_COORDINATE)
+                if ((x_coordinate < SquarePlateauImpl.max_X_Coordinate)
                         && (x_coordinate + 1 != Integer.parseInt(String.valueOf(Rover.roverPositions.get(i).charAt(0))))
                         || (y_coordinate != Integer.parseInt(String.valueOf(Rover.roverPositions.get(i).charAt(2))))) {
                     x_coordinate = x_coordinate + 1;

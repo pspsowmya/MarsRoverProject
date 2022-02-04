@@ -5,9 +5,8 @@ package com.exercises.model.plateau;
  * coordinates of a square plateau
  */
 public class SquarePlateauImpl extends Plateau {
-    private String coordinates;
-    public static int MAX_X_COORDINATE;
-    public static int MAX_Y_COORDINATE;
+    public static int max_X_Coordinate;
+    public static int max_Y_Coordinate;
     public static final int MIN_X_COORDINATE = 0;
     public static final int MIN_Y_COORDINATE = 0;
 
@@ -18,14 +17,14 @@ public class SquarePlateauImpl extends Plateau {
 
     @Override
     public int getMax_X_Coordinate() {
-        MAX_X_COORDINATE = Integer.parseInt(String.valueOf(coordinates.charAt(0)));
-        return MAX_X_COORDINATE;
+        max_X_Coordinate = Integer.parseInt(String.valueOf(coordinates.charAt(0)));
+        return max_X_Coordinate;
     }
 
     @Override
     public int getMax_Y_Coordinate() {
-        MAX_Y_COORDINATE = Integer.parseInt(String.valueOf(coordinates.charAt(0)));
-        return MAX_Y_COORDINATE;
+        max_Y_Coordinate = Integer.parseInt(String.valueOf(coordinates.charAt(0)));
+        return max_Y_Coordinate;
     }
 
 }

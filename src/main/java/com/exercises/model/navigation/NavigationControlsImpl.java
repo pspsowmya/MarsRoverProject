@@ -7,7 +7,9 @@ import com.exercises.model.enums.DirectionEnum;
  * instruction given by user
  */
 public abstract class NavigationControlsImpl implements NavigationControls {
-    private String position;
+    protected String position;
+
+
 
     /**
      * This method is to spin the vehicle to left based on the instruction

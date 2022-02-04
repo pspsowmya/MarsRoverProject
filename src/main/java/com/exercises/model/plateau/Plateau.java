@@ -7,7 +7,7 @@ package com.exercises.model.plateau;
  */
 public abstract class Plateau {
 
-    String coordinates;
+    protected String coordinates;
 
     public Plateau(String coordinates) {
         this.coordinates = coordinates;

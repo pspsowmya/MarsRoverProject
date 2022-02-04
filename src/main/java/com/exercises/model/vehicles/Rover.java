@@ -24,6 +24,7 @@ public class Rover implements Vehicle {
     NavigationControls navigationService = new NavigationServiceForFirstRover();
     NavigationControls navigationServiceForOtherRovers = new NavigationServiceForOtherRovers();
 
+
     /**
      * This method spilts given position into X,Y coordinates and direction
      *
@@ -82,7 +83,7 @@ public class Rover implements Vehicle {
     @Override
     public boolean checkValidCoordinates() throws Exception {
         boolean isValid = false;
-        if (x_coordinate <= SquarePlateauImpl.MAX_X_COORDINATE && y_coordinate <= SquarePlateauImpl.MAX_Y_COORDINATE
+        if (x_coordinate <= SquarePlateauImpl.max_X_Coordinate && y_coordinate <= SquarePlateauImpl.max_Y_Coordinate
                 && x_coordinate >= SquarePlateauImpl.MIN_X_COORDINATE && y_coordinate >= SquarePlateauImpl.MIN_Y_COORDINATE) {
             isValid = true;
         } else {

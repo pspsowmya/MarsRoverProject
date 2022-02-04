@@ -9,9 +9,6 @@ import com.exercises.model.plateau.SquarePlateauImpl;
  */
 public class NavigationServiceForFirstRover extends NavigationControlsImpl {
 
-    private String position;
-
-
     /**
      * This method is to move the first vehicle one step forward or backward direction
      * and skip the instruction if the coordinates are not valid
@@ -25,7 +22,7 @@ public class NavigationServiceForFirstRover extends NavigationControlsImpl {
     @Override
     public String movePosition(int x_coordinate, int y_coordinate, DirectionEnum direction) {
         if (direction.equals(DirectionEnum.N)) {
-            if (y_coordinate < SquarePlateauImpl.MAX_Y_COORDINATE) {
+            if (y_coordinate < SquarePlateauImpl.max_Y_Coordinate) {
                 y_coordinate = y_coordinate + 1;
             } else {
                 y_coordinate = y_coordinate;
@@ -37,7 +34,7 @@ public class NavigationServiceForFirstRover extends NavigationControlsImpl {
                 y_coordinate = y_coordinate;
             }
         } else if (direction.equals(DirectionEnum.E)) {
-            if (x_coordinate < SquarePlateauImpl.MAX_X_COORDINATE) {
+            if (x_coordinate < SquarePlateauImpl.max_X_Coordinate) {
                 x_coordinate = x_coordinate + 1;
             } else {
                 x_coordinate = x_coordinate;
