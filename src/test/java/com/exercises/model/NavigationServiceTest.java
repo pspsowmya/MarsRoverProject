@@ -2,11 +2,13 @@ package com.exercises.model;
 
 import com.exercises.model.plateau.Plateau;
 import com.exercises.model.plateau.SquarePlateauImpl;
+import com.exercises.model.vehicles.MissionControls;
 import com.exercises.model.vehicles.Rover;
 import com.exercises.model.vehicles.Vehicle;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class NavigationServiceTest {
     @Test
@@ -32,6 +34,35 @@ public class NavigationServiceTest {
     }
 
     @Test
+    public void testCheckValidPosition() throws Exception {
+        //Arrange
+        MissionControls controls = new Rover();
+        //Act
+        boolean isValid = controls.checkValidPosition("0 0 N");
+        //Assert
+        assertEquals(true, isValid);
+    }
+
+    @Test
+    public void testCheckInvalidPosition() {
+        //Arrange
+        MissionControls controls = new Rover();
+        //Act and Assert
+        assertThrows(Exception.class, () -> controls.checkValidPosition("0 0 N"));
+    }
+
+
+    @Test
+    public void testCheckInvalidCoordinates() {
+        //Arrange
+        MissionControls controls = new Rover();
+        controls.splitGivenPositionToCoordinatesAndDirection("6 6 N");
+        //Act and Assert
+        assertThrows(Exception.class, () -> controls.checkValidCoordinates());
+    }
+
+
+    @Test
     public void testRoverMovementBasedOnInstruction() throws Exception {
         //Arrange
         Vehicle vehicle = new Rover();
@@ -45,4 +76,6 @@ public class NavigationServiceTest {
         assertEquals("1 5 E", vehicle.getPositionBasedOnInstruction("0 3 S", "MRMRRMLMMMRM"));
         assertEquals("1 0 W", vehicle.getPositionBasedOnInstruction("5 5 S", "MRMLMLMRMRMMMMLMRMLMMMRMM"));
     }
+
+
 }
