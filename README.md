@@ -32,9 +32,12 @@ All the tests should pass and the application should run successfully for additi
 
 ## Future Thoughts
 
-Different Shaped Plateaus 
+Different Shaped Plateaus
 
 Different type of vehicles
+
+Handle Obstacles while vehicles are moving
+
 
 
 
