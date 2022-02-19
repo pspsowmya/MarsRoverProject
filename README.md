@@ -1,6 +1,6 @@
-**Mars Rover Exercise Java**
+#Mars Rover Exercise Java
 
-**About**
+##Overview
 
 This repository contains the implementation of Mars Rover Kata.
 The main aim of this project is to move rovers around the Surface of Mars.The surface of Mars is represented by a Square Plateau. The Plateau is divided into a grid. Different vehicles on space like Rovers , Robots move on this grid. 
@@ -8,8 +8,7 @@ A rover moves based on the instruction provided by the user and the initial posi
 The rover can spin to left / right or move a step forward or backward in different directions North, West, East and South based on the user instruction.
 The final output should be the position where the rover has reached after passing through different positions from the instructions provided by the user. 
 
-
-**Some more details about project** **structure**
+##Design
 
 The UML class diagram for this project is inside the UML folder
 
@@ -30,7 +29,11 @@ mvn test
 
 All the tests should pass and the application should run successfully for additional inputs.
 
- 
+
+##Future Thoughts
+Different Shaped Plateaus 
+Different type of vehicles
+
 
 
 
