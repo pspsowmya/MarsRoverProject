@@ -1,7 +1,5 @@
 package com.exercises.model.vehicles;
 
-import com.exercises.model.navigation.NavigationControls;
-
 /**
  * This interface represents all the vehicles
  * like rovers, robots moving on the plateau

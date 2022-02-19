@@ -8,6 +8,10 @@ import com.exercises.model.navigation.NavigationServiceForOtherRovers;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class handles mission controls to move vehicles
+ * on the plateau based on user input
+ */
 public abstract class MissionControls implements Vehicle {
 
     protected String position;

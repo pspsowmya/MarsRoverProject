@@ -1,17 +1,12 @@
 package com.exercises.model.vehicles;
 
 import com.exercises.model.enums.DirectionEnum;
-import com.exercises.model.navigation.NavigationControls;
 import com.exercises.model.plateau.SquarePlateauImpl;
-import com.exercises.model.navigation.NavigationServiceForOtherRovers;
-import com.exercises.model.navigation.NavigationServiceForFirstRover;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * This class determines the navigation of rovers
- * on the plateau based on user input
+ * This class determines and validates of rover coordinates
+ * based on user input
  */
 public class Rover extends MissionControls {
 
