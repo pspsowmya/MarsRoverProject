@@ -2,7 +2,6 @@ package com.exercises.model;
 
 import com.exercises.model.plateau.Plateau;
 import com.exercises.model.plateau.SquarePlateauImpl;
-import com.exercises.model.vehicles.MissionControls;
 import com.exercises.model.vehicles.Rover;
 import com.exercises.model.vehicles.Vehicle;
 import org.junit.Test;
@@ -41,9 +40,9 @@ public class NavigationServiceTest {
     @Test
     public void testCheckValidPosition() throws Exception {
         //Arrange
-        MissionControls controls = new Rover();
+        Vehicle vehicle = new Rover();
         //Act
-        boolean isValid = controls.checkValidPosition("0 0 N");
+        boolean isValid = vehicle.checkValidPosition("0 0 N");
         //Assert
         assertEquals(true, isValid);
     }
@@ -51,19 +50,19 @@ public class NavigationServiceTest {
     @Test
     public void testCheckInvalidPosition() {
         //Arrange
-        MissionControls controls = new Rover();
+        Vehicle vehicle = new Rover();
         //Act and Assert
-        assertThrows(Exception.class, () -> controls.checkValidPosition("0 0 N"));
+        assertThrows(Exception.class, () -> vehicle.checkValidPosition("0 0 N"));
     }
 
 
     @Test
     public void testCheckInvalidCoordinates() {
         //Arrange
-        MissionControls controls = new Rover();
-        controls.splitGivenPositionToCoordinatesAndDirection("6 6 N");
+        Vehicle vehicle = new Rover();
+        vehicle.splitGivenPositionToCoordinatesAndDirection("6 6 N");
         //Act and Assert
-        assertThrows(Exception.class, () -> controls.checkValidCoordinates());
+        assertThrows(Exception.class, () -> vehicle.checkValidCoordinates());
     }
 
 
@@ -79,6 +78,7 @@ public class NavigationServiceTest {
         assertEquals("0 0 N", expectedPosition);
     }
 
+
     @ParameterizedTest
     @CsvSource({"1 2 N, LMLMLMLMM, 1 3 N", "3 3 E, MMRMMRMRRM, 5 1 E", "0 3 E, MRMR, 0 2 W", "1 2 W, MRMR, 1 2 E",
             "0 3 S, MRMRRMLMMMRM, 1 5 E", "5 5 S, MRMLMLMRMRMMMMLMRMLMMMRMM, 1 0 W"})
@@ -93,5 +93,13 @@ public class NavigationServiceTest {
         assertEquals(expectedPosition, vehicle.getPositionBasedOnInstruction(position, instruction));
     }
 
+    @Test
+    public void testRoverMovementBasedOnInstructionForException() {
+        //Arrange
+        Vehicle vehicle = new Rover();
+
+        //Act and Assert
+        assertThrows(Exception.class, () -> vehicle.getPositionBasedOnInstruction("1 5 E", "LMLM"));
+    }
 
 }
