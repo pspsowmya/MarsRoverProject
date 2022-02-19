@@ -20,7 +20,7 @@ There is an abstract class plateau which specifies the coordinates of a grid
 There is another interface called Vehicle which facilitates the movement of Rovers and other vehicles on the plateau. Vehicle inteface has a class called Rover which implements all the methods inside Vehicle interface to move the rover based on user provided inputs such as position and instruction.
 
 
-**Instructions to run**
+#### Instructions to run
 
 To run this project you need to fork the repository to your git account and clone it to your machine.
 Once cloned you can run the tests using
